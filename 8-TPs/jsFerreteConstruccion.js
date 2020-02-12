@@ -22,7 +22,17 @@ function Rectangulo ()
 }
 function Circulo () 
 {
-	
+    var radio;
+    var circunferencia;
+    var totalAlambre;
+
+    radio = parseInt(document.getElementById("Radio").value);
+
+    circunferencia = 2 * Math.PI * radio;
+
+    totalAlambre = circunferencia * 3;
+
+    alert(totalAlambre);
 }
 function Materiales () 
 {
