@@ -8,7 +8,61 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  ”Usted pago X de IIBB.”, siendo X el impuesto que se pagó. 
 
  */
+// Cantidad, Marca, precioDescuento
 function CalcularPrecio () 
 {
- 	
+    // Declarar variables
+     var precioLampara = 35;
+     var cantidad;
+     var precioTotal;
+     var marca;
+     var costoFinal;
+     var impuesto;
+
+    // Obtención de datos
+    cantidad = parseInt(document.getElementById("Cantidad").value);
+    marca = document.getElementById("Marca").value;
+
+    precioTotal = 35 * cantidad;
+
+    // Operaciones
+    switch (cantidad){
+        case 6: //A
+            costoFinal = precioTotal - ((precioTotal) * 0.50);
+            break;    
+        case 5: //B
+            if(marca == "ArgentinaLuz"){
+                costoFinal = precioTotal - ((precioTotal) * 0.40);
+            } else if(marca != "ArgentinaLuz"){
+                costoFinal = precioTotal - ((precioTotal) * 0.30);
+            }
+            break;
+        case 4: //C
+            if(marca == "ArgentinaLuz" || marca == "FelipeLamparas"){
+                costoFinal = precioTotal - ((precioTotal) * 0.25);
+            } else if(marca != "ArgentinaLuz" || marca != "FelipeLamparas"){
+                costoFinal = precioTotal - ((precioTotal) * 0.20);
+            }
+            break;
+        case 3: //D
+            if(marca == "ArgentinaLuz"){
+                costoFinal = precioTotal - ((precioTotal) * 0.15);
+            } else if(marca == "FelipeLamparas"){
+                costoFinal = precioTotal - ((precioTotal) * 0.10);
+            } else {
+                costoFinal = precioFinal - ((precioTotal) * 0.05);
+            }
+            break;
+        default:
+            costoFinal = precioTotal;
+            break;
+    }
+    //E
+    if(costoFinal >= 120){
+        impuesto = (costoFinal) * 0.10;
+        costoFinal = costoFinal + impuesto;
+        alert("Usted pagó $" + impuesto + " de IIBB");
+    }
+
+    document.getElementById("precioDescuento").value = costoFinal;
 }
